@@ -29,7 +29,8 @@ namespace Sort
             } while (!sorted);
         }
 
-        public static void UniversalSort(ArrayList items, ActionDelegate rule)
+        public static void UniversalSort(ArrayList items, 
+            ActionDelegate rule, ActionDelegate rule2)
         {
             bool sorted = false;
             do
@@ -43,6 +44,16 @@ namespace Sort
                         items[i] = items[i + 1];
                         items[i + 1] = tmp;
                         sorted = false;
+                    }
+                    if(rule(items[i], items[i + 1]) == 0)
+                    {
+                        if (rule2(items[i], items[i + 1]) > 0)
+                        {
+                            dynamic tmp1 = items[i];
+                            items[i] = items[i + 1];
+                            items[i + 1] = tmp1;
+                            sorted = false;
+                        }
                     }
                 }
             } while (!sorted);

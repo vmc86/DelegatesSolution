@@ -36,7 +36,11 @@ namespace Sort
                     new Good { id = 4, title = "reweyt", price = 100500m }
                 };
 
-            Sort.UniversalSort(goods, (a, b) => (((Good)a).title).CompareTo(((Good)b).title));
+            Sort.UniversalSort(
+                goods, 
+                (a, b) => (((Good)a).title).CompareTo(((Good)b).title),
+                (a, b) => (((Good)a).price).CompareTo(((Good)b).price)
+                );
 
             // integers.ForEach(Console.WriteLine);
             foreach (var item in goods)
